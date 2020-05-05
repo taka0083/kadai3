@@ -1,0 +1,37 @@
+<div class="body">
+<div class="container">
+    <div class="row">
+
+
+<!-- プロフィール 部分テンプレート-->
+<%= render 'books/list', books: @user %>
+
+
+
+<!-- User一覧 -->
+    <div class="col-xs-9">
+
+	<h1>User</h1>
+	 <table class="table table-striped">
+	    <thead>
+			<tr>
+				    <th>image</th>
+					<th>name</th>
+					<th colspan="1"></th>
+
+			</tr>
+		</thead>
+		            <% @users.each do |user| %>
+		  <tbody>
+		    <tr>
+					<td><%= attachment_image_tag user, :profile_image, size:"50x50", format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></td>
+				    <td> <%= user.name %></td>
+				    <td> <%= link_to"Show", user_path(user.id) %></td>
+			</tr>
+
+	      </tbody>
+	                <% end %>
+	  </table>
+	</div>
+</div>
+</div>

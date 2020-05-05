@@ -1,0 +1,16 @@
+<div class="body">
+<%= flash[:notice] %>
+<h1> Editing Book</h1>
+<%= form_for(@book) do |f| %>
+	<p>Title</p>
+	<p><%= f.text_field :title %></p>
+	<p>Option</p>
+	<p><%= f.text_area :body %></p>
+	<p><%= f.submit 'Update Book' %></p>
+	<p>
+	<%=link_to"Show",book_path(@book.id) %>
+	<%=link_to"Back",books_path %>
+	</p>
+
+<% end %>
+</div>

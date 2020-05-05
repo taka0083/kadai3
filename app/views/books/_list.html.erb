@@ -1,0 +1,47 @@
+<!-- プロフィール -->
+
+     <div class="col-xs-3" >
+		<h1>User info</h1>
+
+		 <%= attachment_image_tag @user, :profile_image, size:"100x100", format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+	    <table class="table">
+	    	<tbody>
+	    	 <tr>
+		      <th>name</th>
+			  <th><%= @user.name %></th>
+			</tr>
+	        <tr>
+		      <th>intoroduction</th>
+			  <th><%= @user.introduction %></th>
+			</tr>
+			</tbody>
+		</table>
+			<% if @user == current_user %>
+			<%=link_to'', edit_user_path(@user.id) , class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench " %>
+			<%else%>
+			<%=link_to'', user_path(current_user.id) , class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench " %>
+			<%end%>
+		<!-- 投稿機能 -->
+		<% if @user.errors.any? %>
+		  <div class="alert alert-warning">
+		    <ul>
+		      <% @book.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+		<div>
+			<%= notice %>
+		<h1>New book</h1>
+		<%= form_for(@book) do |f| %>
+		    <p>Title</p>
+		    <%= f.text_field :title %>
+		    <p>Option</p>
+		    <%= f.text_area :body %>
+		    <%= f.submit"Create Book",class:"col-xs-12 btn btn-primary" %>
+		<% end %>
+		</div>
+	</div>
+
+

@@ -1,0 +1,25 @@
+<div class="body">
+<%= notice %>
+
+<% if @user.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<h1>User info</h1>
+<%= form_for(@user,url:"/users/#{@user.id}") do |f| %>
+	<p>Name</p>
+	<p><%= f.text_field :name %></p>
+  <p>Image</p>
+   <%= f.attachment_field :profile_image, placeholder: "ファイルを選択" %>
+	<p>Introduction</p>
+	<p><%= f.text_area :introduction %></p>
+	<p><%= f.submit 'Update User' %></p>
+
+
+<% end %>
+</div>
